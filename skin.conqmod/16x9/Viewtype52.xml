@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes> 
+
+	<include name="Viewtype52"><!-- wide media veiw -->
+
+		<control type="group">
+			<visible>Control.IsVisible(52)</visible>
+
+			<!-- Curve -->
+			<include content="Curve-Horizontal">
+				<param name="height">800</param>
+			</include>
+
+			<!-- Wide list -->
+			<control type="fixedlist" id="52">
+				<include condition="String.IsEqual(Skin.String(menuStyle),horizontal)">HomeHorizontal</include>
+				<left>0</left>
+				<!-- <top>120</top> -->
+				<top>470</top>
+				<width>1920</width>
+				<height>700</height>
+				<onup condition="!Skin.HasSetting(KioskMode)">3001</onup>
+				<ondown>61</ondown>
+				<onleft>52</onleft>
+				<onright>52</onright>
+				<pagecontrol>61</pagecontrol>
+				<preloaditems>4</preloaditems>
+				<focusposition>3</focusposition>
+				<orientation>horizontal</orientation>
+				<viewtype label="539">list</viewtype>
+				<scrolltime tween="sine" easing="out">240</scrolltime>
+				<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+
+				<itemlayout width="249" height="666">
+					<!-- Image - Movies -->
+					<include content="image-52">
+						<param name="fallback">DefaultMovie.png</param>
+						<param name="visible">Container.Content(movies)</param>
+					</include>
+					<!-- Image - TV Shows -->
+					<include content="image-52">
+						<param name="fallback">DefaultTVShows.png</param>
+						<param name="visible">!Container.Content(movies)</param>
+					</include>
+					<!-- Watched status -->
+					<control type="image">
+						<left>177</left>
+						<top>452</top>
+						<width>35</width>
+						<height>49</height>
+						<texture>$VAR[StatusOverlayWide]</texture>
+						<colordiffuse>OverlayColorNF</colordiffuse>
+					</control>
+				</itemlayout>
+
+				<focusedlayout width="405" height="666">
+					<control type="group">
+						<animation effect="zoom" start="60" end="100" center="202,300" time="300" tween="back" easing="out" reversible="false">Focus</animation>
+						<!-- Image - Movies -->
+						<include content="image-52-focus">
+							<param name="fallback">DefaultMovie.png</param>
+							<param name="visible">Container.Content(movies)</param>
+						</include>
+						<!-- Image - TV Shows -->
+						<include content="image-52-focus">
+							<param name="fallback">DefaultTVShows.png</param>
+							<param name="visible">!Container.Content(movies)</param>
+						</include>
+						<!-- Watched status -->
+						<control type="image">
+							<left>290</left>
+							<top>585</top>
+							<width>35</width>
+							<height>49</height>
+							<texture>$VAR[StatusOverlayWide]</texture>
+						</control>
+					</control>
+				</focusedlayout>
+
+			</control>
+
+			<control type="group">
+				<!-- <centerleft>50%</centerleft> -->
+				<right>100</right>
+				<top>200</top>
+				<width>1020</width>
+				<height>100</height>
+
+				<!-- Title -->
+				<control type="label">
+					<left>90</left>
+					<top>0</top>
+					<width>1020</width>
+					<height>72</height>
+					<font>Font72</font>
+					<align>left</align>
+					<textcolor>TextColor1</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<animation effect="fade" start="100" end="50" time="200" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(52)">Conditional</animation>
+				</control>
+
+				<!-- Details -->
+				<control type="label">
+					<left>90</left>
+					<top>88</top>
+					<width>1020</width>
+					<height>54</height>
+					<font>Font27</font>
+					<align>left</align>
+					<aligny>top</aligny>
+					<label>$VAR[Label2]</label>
+					<textcolor>TextColor1</textcolor>
+					<animation effect="fade" start="100" end="50" time="200" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(52)">Conditional</animation>
+				</control>
+
+			</control>
+
+		</control>
+
+	</include>
+
+	<include name="image-52">
+		<param name="fallback">DefaultVideos.png</param>
+		<param name="visible">False</param>
+		<definition>
+			<control type="image">
+				<left>23</left>
+				<top>135</top>
+				<width>225</width>
+				<height>333</height>
+				<colordiffuse>DiffusePosterNF</colordiffuse>
+				<texture background="true" fallback="$PARAM[fallback]" colordiffuse="TextColor1">$VAR[mediaImages]</texture>
+				<aspectratio align="center">keep</aspectratio>
+				<visible>$PARAM[visible]</visible>
+				<visible>String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+
+			<control type="image">
+				<left>23</left>
+				<top>135</top>
+				<width>225</width>
+				<height>366</height>
+				<texture border="1,1,1,36">views/DropShadowSmall.png</texture>
+				<visible>$PARAM[visible]</visible>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<left>23</left>
+				<top>135</top>
+				<width>225</width>
+				<height>333</height>
+				<colordiffuse>DiffusePosterNF</colordiffuse>
+				<texture background="true" fallback="$PARAM[fallback]">$VAR[mediaImages]</texture>
+				<aspectratio align="center">scale</aspectratio>
+				<visible>$PARAM[visible]</visible>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+
+		</definition>
+	</include>
+
+	<include name="image-52-focus">
+		<param name="fallback">DefaultVideos.png</param>
+		<definition>
+			<control type="image">
+				<left>11</left>
+				<top>0</top>
+				<width>405</width>
+				<height>600</height>
+				<texture background="true" fallback="$PARAM[fallback]" colordiffuse="TextColor1">$VAR[mediaImages]</texture>
+				<aspectratio align="center">keep</aspectratio>
+				<visible>String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+
+			<control type="image">
+				<left>11</left>
+				<top>0</top>
+				<width>405</width>
+				<height>666</height>
+				<texture border="1,1,1,69">views/DropShadow.png</texture>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<left>11</left>
+				<top>0</top>
+				<width>405</width>
+				<height>600</height>
+				<texture background="true" fallback="$PARAM[fallback]">$VAR[mediaImages]</texture>
+				<aspectratio align="center">scale</aspectratio>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+		</definition>
+	</include>
+
+</includes>

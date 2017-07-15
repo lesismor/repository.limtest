@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+	id="skin.conqmod"
+	version="1.2.3"
+	name="Conqmod"
+	provider-name="Hitcher, Ignoble61, LesIsMor">
+	<requires>
+		<import addon="xbmc.gui" version="5.12.0"/>
+		<import addon="script.skinshortcuts" version="1.0.13"/>
+	</requires>
+	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="1.00" debugging="false">
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">A simple, clean and not-so-light mod of Conq</summary>
+		<disclaimer lang="en">Mouse and Touch device not supported</disclaimer>
+		<description lang="en">Original design: Bolteh[CR]Original Kodi skin: Hitcher[CR]Thanks to 'Black for the icons</description>
+		<news>Minor fixes and screenshots</news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshot-01.jpg</screenshot>
+			<screenshot>resources/screenshot-02.jpg</screenshot>
+			<screenshot>resources/screenshot-03.jpg</screenshot>
+			<screenshot>resources/screenshot-04.jpg</screenshot>
+			<screenshot>resources/screenshot-05.jpg</screenshot>
+			<screenshot>resources/screenshot-06.jpg</screenshot>
+			<screenshot>resources/screenshot-07.jpg</screenshot>
+			<screenshot>resources/screenshot-08.jpg</screenshot>
+			<screenshot>resources/screenshot-09.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>

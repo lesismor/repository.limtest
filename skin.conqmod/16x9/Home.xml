@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<!-- home -->
+	<backgroundcolor>0x00000000</backgroundcolor>
+	<defaultcontrol always="true">9000</defaultcontrol>
+
+	<!-- Skin Shortcuts -->
+	<onload condition="String.IsEqual(Skin.String(menuStyle),vertical)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu&amp;levels=1&amp;minitems=20&amp;options=noGroups)</onload>
+	<onload condition="!String.IsEqual(Skin.String(menuStyle),vertical)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu&amp;levels=1&amp;options=noGroups)</onload>
+
+	<!-- Skin Helper Service -->
+	<onload>Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
+
+	<!-- Ensure lumos menu isn't set -->
+	<onload condition="String.IsEqual(Skin.String(menuStyle),lumos)">Skin.Reset(menuStyle)</onload>
+
+	<controls>
+
+		<!-- Hidden control to load weather conditions -->
+		<control type="label">
+			<font>-</font>
+			<label>$INFO[Weather.Conditions]</label>
+		</control>
+
+		<!-- Background -->
+		<include content="WindowBackgroundImage">
+			<param name="isHomeWindow">True</param>
+		</include>
+
+		<!-- Time -->
+		<include content="Time">
+			<param name="heading"></param>
+		</include>
+		
+		<!-- Home layout -->
+		<control type="group">
+			<include>WindowFadeAnimation</include>
+			<include condition="String.IsEmpty(Skin.String(menuStyle))">HomeOSMC</include>
+			<include condition="String.IsEqual(Skin.String(menuStyle),vertical)">HomeVertical</include>
+			<include condition="String.IsEqual(Skin.String(menuStyle),horizontal)">HomeHorizontal</include>
+			<include condition="String.IsEqual(Skin.String(menuStyle),lumos)">HomeLumos</include>
+		</control>
+
+		<!-- RSS -->
+		<control type="image">
+			<right>0</right>
+			<bottom>0</bottom>
+			<width>1920</width>
+			<height>37</height>
+			<texture colordiffuse="$VAR[OverlayColor]">dialogs/Background.png</texture>
+			<visible>system.getbool(lookandfeel.enablerssfeeds)</visible>
+			<include>WindowFadeAnimation</include>
+		</control>
+		<control type="rss" id="1">
+			<left>0</left>
+			<bottom>0</bottom>
+			<width>1920</width>
+			<height>35</height>
+			<font>Font30</font>
+			<textcolor>TextColor2</textcolor>
+			<headlinecolor>TextColor2</headlinecolor>
+			<titlecolor>TextColor2</titlecolor>
+			<urlset>1</urlset>
+			<include>WindowFadeAnimation</include>
+		</control>
+
+	</controls>
+
+</window>

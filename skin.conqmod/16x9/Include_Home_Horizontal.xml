@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<include name="HomeHorizontal">
+		<!-- Curve -->
+		<control type="image">
+			<left>20</left>
+			<top>765</top>
+			<width>1880</width>
+			<height>295</height>
+			<texture border="0,40,0,0">common/CurveHorzAlt.png</texture>
+			<visible>Skin.HasSetting(ShowCurve)</visible>
+		</control>
+
+		<!-- Widget control -->
+		<include>skinshortcuts-template-widgetControl</include>
+		
+        <!-- tv window -->
+		<include>horizontaltv</include>
+		
+		<!-- dvdimage -->
+		<control type="image">
+		    <!-- <include condition="String.IsEqual(Skin.String(menuStyle),horizontal)">HomeHorizontal</include> -->
+			<left>390</left>
+			<top>475</top>
+			<width>300</width>
+			<height>75</height>
+			<texture>common/dvdoverlay.png</texture>
+			<include>WindowFadeAnimation</include>
+		</control>
+	    <control type="image">
+		    <!-- <include condition="String.IsEqual(Skin.String(menuStyle),horizontal)">HomeHorizontal</include> -->
+			<left>140</left>
+			<top>475</top>
+			<width>600</width>
+			<height>75</height>
+			<texture>common/dvd3.png</texture>
+			<include>WindowFadeAnimation</include>
+		</control>
+		
+		<!-- Main list -->
+		<control type="wraplist" id="9000">
+			<left>398</left>
+			<top>490</top>
+			<width>300</width>
+			<height>80</height>
+			<ondown>9001</ondown>
+			<onup condition="Control.IsVisible(9006)">9006</onup>
+			<onleft>9000</onleft>
+			<onright>9000</onright>
+			<focusposition>0</focusposition>
+			<defaultcontrol>3</defaultcontrol>
+			<orientation>horizontal</orientation>
+			<scrolltime tween="sine" easing="out">0</scrolltime>
+
+			<itemlayout width="300" height="50">
+				<control type="label">
+					<top>250</top>
+					<width>300</width>
+					<height>80</height>
+					<align>left</align>
+					<label>$INFO[ListItem.Label]</label>
+					<font>lim46</font>
+					<textcolor>FF00FFFF</textcolor>
+					<!-- <textcolor>$VAR[homeUnfocused]</textcolor> -->
+				</control>
+			</itemlayout>
+
+			<focusedlayout width="300" height="50">
+				<control type="label">
+					<top>0</top>
+					<width>300</width>
+					<height>50</height>
+					<align>left</align>
+					<label>$INFO[ListItem.Label]</label>
+					<font>lim46</font>
+					<textcolor>TextColor1</textcolor>
+					<shadowcolor>ShadowColor</shadowcolor>
+					<animation effect="fade" start="100" end="50" time="200" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(9000)">Conditional</animation>
+				</control>
+			</focusedlayout>
+
+			<content>
+				<include>skinshortcuts-mainmenu</include>
+			</content>
+
+		</control>
+		
+		<!-- custom panel -->
+        <control type="image">
+		    <left>13</left>
+			<top>570</top>
+			<width>1894</width>
+			<height>490</height>
+			<texture>$VAR[PanelImage]</texture>
+			<include>WindowFadeAnimation</include>
+		</control>
+		
+		<!-- logo -->
+		<control type="image">
+			<right>50</right>
+			<top>600</top>
+			<width>390</width>
+			<height>390</height>
+			<!-- <texture>common/glass-black1.png</texture> -->
+			<texture>$VAR[Logo]</texture>
+			<colordiffuse>40FFFFFF</colordiffuse>
+			<include>WindowFadeAnimation</include>
+		</control> 
+		
+		<!-- button row -->
+		<control type="grouplist" id="747747">
+		    <top>900</top>
+			<left>1100</left>
+			<width>700</width>
+			<orientation>horizontal</orientation>
+			<align>right</align>
+		    <onleft>9001</onleft>
+			<!-- button1 -->
+			<control type="button" id="2747747">
+				<description>video addons</description>
+				<width>125</width>
+				<height>125</height>
+				<visible>true</visible>
+				<colordiffuse>99FFFFFF</colordiffuse>
+				<texturefocus colordiffuse="FF045FB4">DefaultVideo.png</texturefocus>
+				<texturenofocus colordiffuse="FFD8D8D8">DefaultVideo.png</texturenofocus>
+				
+				<wrapmultiline>true</wrapmultiline>
+				<font>font12</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<focusedcolor>FFFFFFFF</focusedcolor>
+				<onclick>XBMC.ActivateWindow(Videos,addons://sources/video/)</onclick>
+				<onleft>9001</onleft>
+				<onright>3747747</onright> 
+			</control>
+			
+			<!-- button2 -->
+			<control type="button" id="3747747">
+				<description>music addons</description>
+				<width>125</width>
+				<height>125</height>
+				<visible>true</visible>
+				<colordiffuse>99FFFFFF</colordiffuse>
+				<texturefocus colordiffuse="FF045FB4">DefaultMusicVideos.png</texturefocus>
+				<texturenofocus colordiffuse="FFD8D8D8">DefaultMusicVideos.png</texturenofocus>
+				<wrapmultiline>true</wrapmultiline>
+				<font>font12</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<focusedcolor>FFFFFFFF</focusedcolor>
+				<onclick>XBMC.ActivateWindow(Music,addons://sources/audio/)</onclick>
+				<onleft>button2</onleft>
+				<onright>4747747</onright>
+			</control>
+			
+			<!-- button3 -->
+			<control type="button" id="4747747">
+				<description>programs</description>
+				<width>125</width>
+				<height>125</height>
+				<visible>true</visible>
+				<colordiffuse>99FFFFFF</colordiffuse>
+				<texturefocus colordiffuse="FF045FB4">DefaultProgram.png</texturefocus>
+				<texturenofocus colordiffuse="FFD8D8D8">DefaultProgram.png</texturenofocus>
+				<wrapmultiline>true</wrapmultiline>
+				<font>font12</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<focusedcolor>FFFFFFFF</focusedcolor>
+				<onclick>XBMC.ActivateWindow(Programs,addons://sources/executable/)</onclick>
+				<onleft>button3747747</onleft>
+			</control>
+			
+			<!-- button4 -->
+			<control type="button" id="5747747">
+				<description>settings</description>
+				<width>125</width>
+				<height>125</height>
+				<visible>true</visible>
+				<colordiffuse>99FFFFFF</colordiffuse>
+				<texturefocus colordiffuse="FF045FB4">DefaultSettings.png</texturefocus>
+				<texturenofocus colordiffuse="FFD8D8D8">DefaultSettings.png</texturenofocus>
+				<!-- <label>Settings</label> -->
+				<wrapmultiline>true</wrapmultiline>
+				<font>font12</font>
+				<textcolor>FFFFFFFF</textcolor>
+				<focusedcolor>FFFFFFFF</focusedcolor>
+				<onclick>XBMC.ActivateWindow(Settings)</onclick>
+				<onleft>button4747747</onleft>
+			</control>
+		</control>
+		
+
+		<!-- Sub menu -->
+		<control type="fixedlist" id="9001">
+			<left>50</left>
+			<top>580</top>
+			<width>1040</width>
+			<height>500</height>
+			<onup>9000</onup>
+			<ondown>9001</ondown>
+			<onleft>noop</onleft>
+			<onright>747747</onright>
+			<focusposition></focusposition>
+			<orientation>vertical</orientation>
+			<defaultcontrol always="true">1</defaultcontrol>
+			<scrolltime tween="sine" easing="out">240</scrolltime>
+			<!-- <visible allowhiddenfocus="true">Control.HasFocus(9001)</visible> -->
+			<animation type="Visible" reversible="false">
+				<effect type="fade" start="0" end="100" time="320" tween="sine" easing="in" />
+			</animation>
+
+			<itemlayout width="450" height="100">
+				<control type="label">
+					<top>0</top>
+					<width>450</width>
+					<height>100</height>
+					<align>left</align>
+					<label>$INFO[ListItem.Label]</label>
+					<font>Font30</font>
+					<textcolor>TextColor1</textcolor>
+				</control>
+			</itemlayout>
+
+			<focusedlayout width="450" height="100">
+				<control type="label">
+					<top>0</top>
+					<width>450</width>
+					<height>100</height>
+					<align>left</align>
+					<label>$INFO[ListItem.Label]</label>
+					<font>Font42</font>
+					<textcolor>TextColor1</textcolor>
+					<shadowcolor>ShadowColor</shadowcolor>
+					<animation effect="fade" start="100" end="50" time="200" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(9001)">Conditional</animation>
+				</control>
+			</focusedlayout>
+
+			<content>
+				<include>skinshortcuts-submenu</include>
+			</content>
+
+		</control>
+
+		<!-- Widgets -->
+		<control type="group" id="9002">
+			<include>skinshortcuts-template-vertical</include>
+		</control>
+
+		<!-- Reloading indicator -->
+		<control type="group">
+			<left>1820</left>
+			<top>980</top>
+			<include>skinshortcuts-template-reloading</include>
+		</control>
+
+	</include>
+
+</includes>
